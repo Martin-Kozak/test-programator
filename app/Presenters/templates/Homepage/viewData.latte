@@ -1,0 +1,30 @@
+{block title}Seznam osob{/block}
+{block content}
+
+<table id="gridview" class="blueTable">
+    <thead>
+        <tr>
+            <th>Jméno</th>
+            <th>Příjmení</th>
+            <th>Datum</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="3"></td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr onclick="toggleClass(this,'selected');" n:foreach="$persons as $person">
+            <td>
+                {$person->jmeno}
+            </td>
+            <td>
+                {$person->prijmeni}
+            </td>
+            <td>
+                {$person->datum|date:'d.m. Y'}
+            </td>
+        </tr>
+    </tbody>
+</table>

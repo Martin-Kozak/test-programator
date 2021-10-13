@@ -1,0 +1,32 @@
+#
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# https://nette.org/security-warning
+#
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+# Konfigurace databázového připojení v rámci celé aplikace
+database:
+	dsn: 'mysql:host=127.0.0.1;dbname=programator-test' # Typ, adresa a název databáze
+	user: 'root' # Uživatelské jméno
+	password: # Heslo
+	options:
+		lazy: yes
+
+# Nastavení služeb
+services:
+	# Vytvoření routru pro aplikaci
+	- App\Router\RouterFactory::createRouter
+
+	# Vlastní služba dále přístupná pomocí DI
+	- App\Model\DatabaseManager
+	- App\Model\DataManager

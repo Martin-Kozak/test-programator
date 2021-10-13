@@ -1,0 +1,11 @@
+#index.php se nachází ve složce www/, původní URL adresa by vypadala takto: http://localhost/test-programator/www
+#Přesměrování do složky www/, nová URL adresa = http://localhost/test-programator
+#Výchozí zobrazení v prohlížeči zajišťuje HomepagePresenter s umístěním: app/Presenters
+<IfModule mod_rewrite.c>
+        RewriteEngine On
+        RewriteRule ^$ www/ [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_URI} !^www/
+        RewriteRule ^(.*)$ www/$1
+</IfModule>
